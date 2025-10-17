@@ -1,0 +1,314 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated to UrbanFlex brand colors from design brief */
+  --background: #f8f9fa; /* Light Gray */
+  --foreground: #212529; /* Dark Gray */
+  --card: #ffffff; /* White */
+  --card-foreground: #212529; /* Dark Gray */
+  --popover: #ffffff; /* White */
+  --popover-foreground: #212529; /* Dark Gray */
+  --primary: #1e90ff; /* Deep Navy */
+  --primary-foreground: #ffffff; /* White */
+  --secondary: #00ff7f; /* Bright Orange */
+  --secondary-foreground: #0b0b0b; /* Dark Gray */
+  --muted: #f8f9fa; /* Light Gray */
+  --muted-foreground: #212529; /* Dark Gray */
+  --accent: #ff3cac; /* Hot Pink */
+  --accent-foreground: #0b0b0b; /* Dark Gray */
+  --accent-soft-orange: #ff6b35; /* Soft Orange */
+  --accent-light-purple: #b892ff; /* Light Purple */
+  --destructive: #e63946; /* Red for errors */
+  --destructive-foreground: #ffffff; /* White */
+  --border: #e5e7eb; /* Light border */
+  --input: #ffffff; /* White for input fields */
+  --ring: rgba(26, 35, 126, 0.2); /* Soft outline for focused elements */
+  --chart-1: #1e90ff; /* Deep Navy */
+  --chart-2: #00ff7f; /* Bright Orange */
+  --chart-3: #212529; /* Dark Gray */
+  --chart-4: #f8f9fa; /* Light Gray */
+  --chart-5: #ffffff; /* White */
+  --radius: 0.625rem; /* For rounded corners */
+  --sidebar: #ffffff; /* White for sidebar background */
+  --sidebar-foreground: #212529; /* Dark Gray for sidebar text */
+  --sidebar-primary: #1e90ff; /* Deep Navy for sidebar highlights */
+  --sidebar-primary-foreground: #ffffff; /* White for sidebar text */
+  --sidebar-accent: #ff3cac; /* Bright Orange for sidebar accents */
+  --sidebar-accent-foreground: #ffffff; /* White for sidebar text */
+  --sidebar-border: #e5e7eb; /* Light border for sidebar */
+  --sidebar-ring: rgba(26, 35, 126, 0.2); /* Soft outline for focused elements */
+}
+
+.dark {
+  /* Updated dark mode colors to maintain brand consistency */
+  --background: #1a1a1a;
+  --foreground: #ffffff;
+  --card: #2a2a2a;
+  --card-foreground: #ffffff;
+  --popover: #2a2a2a;
+  --popover-foreground: #ffffff;
+  --primary: #00ff7f; /* Bright Orange for dark mode primary */
+  --primary-foreground: #ffffff;
+  --secondary: #1e90ff; /* Deep Navy for dark mode secondary */
+  --secondary-foreground: #ffffff;
+  --muted: #2a2a2a;
+  --muted-foreground: #a0a0a0;
+  --accent: #ff3cac;
+  --accent-foreground: #ffffff;
+  --destructive: #e63946;
+  --destructive-foreground: #ffffff;
+  --border: #404040;
+  --input: #2a2a2a;
+  --ring: rgba(255, 111, 0, 0.2);
+  --chart-1: #00ff7f;
+  --chart-2: #1e90ff;
+  --chart-3: #ffffff;
+  --chart-4: #2a2a2a;
+  --chart-5: #404040;
+  --sidebar: #2a2a2a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #00ff7f;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #1e90ff;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #404040;
+  --sidebar-ring: rgba(255, 111, 0, 0.2);
+}
+
+@theme inline {
+  /* Updated font configuration for UrbanFlex brand fonts */
+  --font-montserrat: var(--font-montserrat);
+  --font-open-sans: var(--font-open-sans);
+  --font-sans: var(--font-open-sans); /* Open Sans for body text */
+  --font-heading: var(--font-montserrat);
+  --font-body: var(--font-open-sans);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    /* Hide scrollbars globally without using @apply */
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  body::-webkit-scrollbar {
+    display: none;
+  } /* Chrome/Safari */
+
+  /* Updated typography to use Montserrat for headings and Open Sans for body */
+  h1 {
+    font-family: var(--font-montserrat);
+    @apply font-bold text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    font-family: var(--font-montserrat);
+    @apply font-bold text-xl md:text-2xl lg:text-3xl;
+  }
+
+  h3 {
+    font-family: var(--font-montserrat);
+    @apply font-semibold text-lg md:text-xl lg:text-2xl;
+  }
+
+  p {
+    font-family: var(--font-open-sans);
+    @apply text-sm md:text-base leading-relaxed;
+  }
+
+  /* Add attribute-based scrollbar hiding (no Tailwind utility needed) */
+  [data-hide-scrollbar="true"] {
+    -ms-overflow-style: none; /* IE/Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  [data-hide-scrollbar="true"]::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+}
+
+/* Updated UrbanFlex custom animations to match brand colors */
+@layer utilities {
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(26, 35, 126, 0.3);
+  }
+
+  .neon-glow-orange {
+    box-shadow: 0 0 20px rgba(255, 111, 0, 0.3);
+  }
+
+  .hover-scale {
+    transition: transform .3s ease;
+  }
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .animate-pulse-soft {
+    animation: pulseSoft .9s ease-in-out infinite;
+  }
+  .animate-in-left {
+    animation: slideInLeft .5s ease both;
+  }
+  .animate-in-right {
+    animation: slideInRight .5s ease both;
+  }
+
+  /* Gradient for hero area (Hot Pink -> Electric Blue -> Neon Green) */
+  .gradient-hero {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 50%, var(--secondary) 100%);
+  }
+  .gradient-cta {
+    background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+    color: var(--primary-foreground);
+  }
+
+  /* Featured glow (animated border gradient) */
+  .featured-glow {
+    position: relative;
+    border-radius: var(--radius);
+  }
+  .featured-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: conic-gradient(
+      from var(--glow-angle, 0deg),
+      var(--accent),
+      var(--primary),
+      var(--secondary),
+      var(--accent)
+    );
+    animation: glowBorder 4s linear infinite;
+    z-index: 0;
+    filter: blur(6px);
+    opacity: 0.6;
+  }
+  .featured-glow > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Badges: pulse/blink */
+  .badge-pulse {
+    animation: pulseSoft 1.2s ease-in-out infinite;
+  }
+
+  /* Tap bounce for icons */
+  .icon-tap:active {
+    animation: bounceTap .25s ease-in-out;
+  }
+
+  /* Parallax-ready class (subtle) */
+  .parallax {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Sticky bottom CTA (mobile) */
+  .sticky-cta {
+    position: sticky;
+    bottom: 0;
+    backdrop-filter: blur(8px);
+    background: color-mix(in oklab, var(--background) 82%, white);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  }
+}
+
+@keyframes pulseSoft {
+  0%,
+  100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0));
+  }
+  50% {
+    transform: scale(1.04);
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.12));
+  }
+}
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes glowBorder {
+  0% {
+    --glow-angle: 0deg;
+  }
+  100% {
+    --glow-angle: 360deg;
+  }
+}
+@keyframes bounceTap {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  30% {
+    transform: translateY(-2px) scale(0.98);
+  }
+  60% {
+    transform: translateY(0) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
